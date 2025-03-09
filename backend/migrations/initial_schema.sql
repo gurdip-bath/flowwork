@@ -46,3 +46,8 @@ CREATE TABLE onboarding (
     contract_status VARCHAR(50) NOT NULL DEFAULT 'unsigned',
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
 );
+
+-- Create indexes for performance
+CREATE INDEX idx_employees_department ON employees(department_id);
+CREATE INDEX idx_employees_status ON employees(status);
+CREATE INDEX idx_onboarding_status ON onboarding(status);

@@ -16,3 +16,9 @@ CREATE TABLE departments (
     description TEXT,
     manager_id INTEGER -- Will add the foreign key constraint later
 );
+
+-- Create employees tables
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+)

@@ -21,4 +21,12 @@ CREATE TABLE departments (
 CREATE TABLE employees (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
-)
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone_number VARCHAR(50),
+    department_id INTEGER REFERENCES departments(id) ON DELETE SET NULL,
+    position VARCHAR(100) NOT NULL,
+    hire_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    status VARCHAR(50) NOT NULL DEFAULT 'active'
+);

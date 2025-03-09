@@ -1,5 +1,4 @@
 -- create users table
-
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -51,3 +50,10 @@ CREATE TABLE onboarding (
 CREATE INDEX idx_employees_department ON employees(department_id);
 CREATE INDEX idx_employees_status ON employees(status);
 CREATE INDEX idx_onboarding_status ON onboarding(status);
+
+-- Insert initial departments
+INSERT INTO departments (name, description)
+VALUES 
+    ('Human Resources', 'Responsible for recruiting and employee management'),
+    ('Engineering', 'Software development and technical operations'),
+    ('Administration', 'Office and business administration');

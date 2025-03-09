@@ -35,3 +35,14 @@ CREATE TABLE employees (
 ALTER TABLE departments 
 ADD CONSTRAINT fk_manager_id 
 FOREIGN KEY (manager_id) REFERENCES employees(id) ON DELETE SET NULL;
+
+-- Create onboarding table
+CREATE TABLE onboarding (
+    id SERIAL PRIMARY KEY,
+    employee_id INTEGER NOT NULL UNIQUE REFERENCES employees(id) ON DELETE CASCADE,
+    start_date DATE NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'pending',
+    offer_letter_url VARCHAR(255),
+    contract_status VARCHAR(50) NOT NULL DEFAULT 'unsigned',
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);

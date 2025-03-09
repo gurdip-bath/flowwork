@@ -14,7 +14,7 @@ CREATE TABLE departments (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
     description TEXT,
-    manager_id INTEGER -- Will add the foreign key constraint later
+    manager_id INTEGER -- added the foreign key restraint below
 );
 
 -- Create employees tables
@@ -30,3 +30,8 @@ CREATE TABLE employees (
     hire_date DATE NOT NULL DEFAULT CURRENT_DATE,
     status VARCHAR(50) NOT NULL DEFAULT 'active'
 );
+
+-- Now add the foreign key constraint to departments table
+ALTER TABLE departments 
+ADD CONSTRAINT fk_manager_id 
+FOREIGN KEY (manager_id) REFERENCES employees(id) ON DELETE SET NULL;

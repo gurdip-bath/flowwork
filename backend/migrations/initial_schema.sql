@@ -56,4 +56,5 @@ INSERT INTO departments (name, description)
 VALUES 
     ('Human Resources', 'Responsible for recruiting and employee management'),
     ('Engineering', 'Software development and technical operations'),
-    ('Administration', 'Office and business administration');
+    ('Administration', 'Office and business administration'),
+    ('');

@@ -11,3 +11,7 @@ class EmployeeBase(BaseModel):
     department_id: Optional[int] = None
     position: str
     status: str = "active"
+    
+class EmployeeCreate(EmployeeBase):
+    user_id: int
+    hire_date: Optional[date] = None

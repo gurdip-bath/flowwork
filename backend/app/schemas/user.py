@@ -10,3 +10,17 @@ class UserBase(BaseModel):
 
 class UserCreate(UserBase):
     password: str  # Only for creation
+
+
+class UserUpdate(BaseModel):
+    email: Optional[EmailStr] = None
+    role: Optional[str] = None
+    is_active: Optional[bool] = None
+    password: Optional[str] = None  # Optional for updates
+
+class UserResponse(UserBase):
+    id: int
+    created_at: datetime
+
+    class Config:
+        orm_mode = True

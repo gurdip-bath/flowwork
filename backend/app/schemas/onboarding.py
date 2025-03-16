@@ -8,3 +8,12 @@ class OnboardingBase(BaseModel):
     status: str = "pending"
     contract_status: str = "unsigned"
     offer_letter_url: Optional[str] = None
+
+class OnboardingCreate(OnboardingBase):
+    pass
+
+class OnboardingUpdate(BaseModel):
+    start_date: Optional[date] = None
+    status: Optional[str] = None
+    contract_status: Optional[str] = None
+    offer_letter_url: Optional[str] = None

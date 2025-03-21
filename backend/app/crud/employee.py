@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from app.models.employee import Employee
-from app.schemas.user import UserCreate, UserUpdate
+from app.schemas.employee import EmployeeCreate, EmployeeUpdate 
 from app.core.security import get_password_hash
 
 def get_employee(db: Session, employee_id: int):

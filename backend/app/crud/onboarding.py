@@ -25,3 +25,25 @@ def create_onboarding(db: Session, onboarding: OnboardingCreate):
    db.commit()
    db.refresh(db_onboarding)
    return db_onboarding
+
+def update_onboarding(db: Session, onboarding_id: int, onboarding: OnboardingUpdate):
+   db_onboarding = get_onboarding(db, onboarding_id)
+   if not db_onboarding:
+       return None
+   
+   update_data = onboarding.model_dump(exclude_unset=True)
+   for key, value in update_data.items():
+       setattr(db_onboarding, key, value)
+   
+   db.commit()
+   db.refresh(db_onboarding)
+   return db_onboarding
+
+def delete_onboarding(db: Session, onboarding_id: int):
+   db_onboarding = get_onboarding(db, onboarding_id)
+   if not db_onboarding:
+       return None
+   
+   db.delete(db_onboarding)
+   db.commit()
+   return db_onboarding

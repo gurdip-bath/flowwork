@@ -13,3 +13,15 @@ def get_onboardings(db: Session, skip: int = 0, limit: int = 100):
 
 def get_onboardings_by_status(db: Session, status: str):
    return db.query(Onboarding).filter(Onboarding.status == status).all()
+
+def create_onboarding(db: Session, onboarding: OnboardingCreate):
+   db_onboarding = Onboarding(
+       employee_id=onboarding.employee_id,
+       start_date=onboarding.start_date,
+       status=onboarding.status,
+       
+   )
+   db.add(db_onboarding)
+   db.commit()
+   db.refresh(db_onboarding)
+   return db_onboarding

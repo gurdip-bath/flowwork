@@ -10,3 +10,6 @@ def get_onboarding_by_employee(db: Session, employee_id: int):
 
 def get_onboardings(db: Session, skip: int = 0, limit: int = 100):
    return db.query(Onboarding).offset(skip).limit(limit).all()
+
+def get_onboardings_by_status(db: Session, status: str):
+   return db.query(Onboarding).filter(Onboarding.status == status).all()

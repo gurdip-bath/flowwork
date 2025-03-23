@@ -9,7 +9,6 @@ from app.db.session import SessionLocal
 from app.core.config import settings
 from app.core.security import verify_password
 from app.crud import user as user_crud
-from app.schemas.token import TokenPayload
 
 # OAuth2 scheme for token validation
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")

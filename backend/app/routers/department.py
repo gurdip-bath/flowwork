@@ -11,3 +11,18 @@ router = APIRouter(
     tags=["departments"],
     dependencies=[Depends(get_current_active_user)]
 )
+
+
+@router.get("/", response_model=List[DepartmentResponse])
+def read_departments(
+    skip: int = 0, 
+    limit: int = 100, 
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_active_user)
+):
+    """
+    Retrieve all departments.
+    All active users can view department information.
+    """
+    departments = department_crud.get_departments(db, skip=skip, limit=limit)
+    return departments

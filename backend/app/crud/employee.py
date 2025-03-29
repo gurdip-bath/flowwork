@@ -16,17 +16,15 @@ def get_employees_by_department(db: Session, department_id: int):
     return db.query(Employee).filter(Employee.department_id == department_id).all()
 
 def create_employee(db: Session, employee: EmployeeCreate):
-    hashed_password = get_password_hash(Employee.password)
     db_employee = Employee(
         first_name=employee.first_name,
         last_name=employee.last_name,
         email=employee.email,
-        password_hash=hashed_password,
-        phone=employee.phone,
+        phone_number=employee.phone_number,
         department_id=employee.department_id,
         position=employee.position,
         hire_date=employee.hire_date,
-        is_active=employee.is_active
+        status=employee.status
     )
     db.add(db_employee)
     db.commit()

@@ -26,3 +26,17 @@ def read_departments(
     """
     departments = department_crud.get_departments(db, skip=skip, limit=limit)
     return departments
+
+@router.get("/{department_id}", response_model=DepartmentResponse)
+def read_department(
+    department_id: int, 
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_active_user)
+):
+    """
+    Get a specific department by ID.
+    """
+    db_department = department_crud.get_department(db, department_id=department_id)
+    if db_department is None:
+        raise HTTPException(status_code=404, detail="Department not found")
+    return db_department

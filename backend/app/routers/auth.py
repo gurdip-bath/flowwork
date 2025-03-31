@@ -6,6 +6,8 @@ from datetime import timedelta
 from app.dependencies import get_db, authenticate_user, create_access_token
 from app.core.config import settings
 from app.schemas.token import Token
+from app.schemas.user import UserCreate, UserResponse
+from app.crud import user as user_crud
 
 router = APIRouter(
     prefix="/auth",
@@ -20,7 +22,13 @@ def login_for_access_token(
 ):
     """
     Authenticate user and provide a JWT access token.
+    
+    This endpoint:
+    1. Takes username (email) and password from form data
+    2. Validates the credentials against the database
+    3. Returns a JWT token if authentication succeeds
     """
+    # Authenticate user (email is used as username)
     user = authenticate_user(db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(
@@ -47,20 +55,33 @@ def login_for_access_token(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@router.post("/refresh-token", response_model=Token)
-def refresh_access_token():
+@router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+def register_new_user(
+    user: UserCreate,
+    db: Session = Depends(get_db)
+):
     """
-    Refresh the access token.
-    This is a placeholder - you'll need to implement refresh token functionality
-    based on your security requirements.
-    """
-    # TODO: Implement refresh token functionality
-    # This could involve:
-    # 1. Receiving a refresh token
-    # 2. Validating it
-    # 3. Creating a new access token
+    Register a new user account.
     
-    raise HTTPException(
-        status_code=status.HTTP_501_NOT_IMPLEMENTED,
-        detail="This endpoint is not yet implemented"
-    )
+    This endpoint:
+    1. Takes user details including email and password
+    2. Checks if the email is already registered
+    3. Creates a new user with hashed password
+    4. Returns the created user info (without password)
+    """
+    # Check if user already exists
+    db_user = user_crud.get_user_by_email(db, email=user.email)
+    if db_user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email already registered"
+        )
+    
+    # Create new user with regular user role by default
+    # You can customize this if needed, e.g., first user is admin
+    user_data = user.model_dump() 
+    if "role" not in user_data or not user_data["role"]:
+        user_data["role"] = "user"  # Default role
+    
+    # Create user in database
+    return user_crud.create_user(db=db, user=UserCreate(**user_data))

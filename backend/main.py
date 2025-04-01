@@ -36,7 +36,7 @@ app.include_router(department.router, prefix=settings.API_V1_STR)
 app.include_router(onboarding.router, prefix=settings.API_V1_STR)
 
 
-@app.lifespan("startup")
+@app.on_event("startup")
 async def startup_event():
     """
     Actions to run on application startup.
@@ -48,7 +48,7 @@ async def startup_event():
     logger.info(f"Ensuring upload directory exists: {settings.UPLOAD_DIR}")
 
 
-@app.lifespan("shutdown")
+@app.on_event("shutdown")
 async def shutdown_event():
     """
     Actions to run on application shutdown.

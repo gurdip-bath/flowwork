@@ -19,5 +19,5 @@ class Employee(Base):
     
     # Relationships
     user = relationship("User", back_populates="employee")
-    department = relationship("Department", back_populates="employees")
+    department = relationship("Department", back_populates="employees", foreign_keys=[department_id])
     onboarding = relationship("Onboarding", back_populates="employee", uselist=False, cascade="all, delete-orphan")

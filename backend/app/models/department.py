@@ -11,5 +11,5 @@ class Department(Base):
     manager_id = Column(Integer, ForeignKey("employees.id", ondelete="SET NULL"), nullable=True)
     
     # Relationships
-    employees = relationship("Employee", back_populates="department")
+    employees = relationship("Employee", back_populates="department", foreign_keys="[Employee.department_id]")
     manager = relationship("Employee", foreign_keys=[manager_id], post_update=True)

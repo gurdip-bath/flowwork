@@ -1,6 +1,8 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm';
 
+// Manages the page context and layout
+
 const LoginPage: React.FC = () => {
   const handleLogin = (email: string, password: string) => {
     console.log('Login attempt with:', email, password);

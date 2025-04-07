@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
 }
-
+// Focused only on form functionality
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

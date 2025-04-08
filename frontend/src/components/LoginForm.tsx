@@ -4,6 +4,21 @@ import * as Yup from 'yup';
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
 }
+
+// Define validation schema
+const LoginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('Email is required'),
+  password: Yup.string()
+    .min(8, 'Password must be at least 8 characters')
+    .required('Password is required'),
+});
+
+interface LoginFormProps {
+  onSubmit: (email: string, password: string) => void;
+}
+
 // Focused only on form functionality
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const [email, setEmail] = useState('');

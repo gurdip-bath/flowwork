@@ -24,10 +24,20 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+ const handleSubmit = (event: React.FormEvent) => {
+  event.preventDefault();
+  
+  try {
+    // Use the LoginSchema to validate inputs before submission
+    LoginSchema.validateSync({ email, password });
+    // If validation passes, proceed with submission
     onSubmit(email, password);
-  };
+  } catch (error) {
+    // If validation fails, handle the error
+    console.error('Validation error:', error);
+    // You could add state here to display errors if needed
+  }
+};
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded shadow-md">

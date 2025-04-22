@@ -1,8 +1,19 @@
-import { useAuth } from "../../context/AuthContext";
+import React from 'react';
+// Comment out the actual context import for now
+// import { useAuth } from "../../context/AuthContext";
 
 const AppHeader: React.FC = () => {
-  // Get auth context data
-  const { user, isAuthenticated, logout } = useAuth();
+  // Comment out the real auth context
+  // const { user, isAuthenticated, logout } = useAuth();
+  
+  // using these mock values for testing
+  const user = {
+    id: 1,
+    email: "test@example.com",
+    role: "admin"
+  };
+  const isAuthenticated = true;
+  const logout = () => console.log("Logout clicked");
   
   return (
     <header className="bg-white shadow-md px-6 py-4">

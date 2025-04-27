@@ -1,6 +1,13 @@
 import React from 'react';
 
 const AppHeader: React.FC = () => { 
+
+  // Mock user data for now
+  const user = {
+    email: "test@example.com",
+    role: "admin"
+  };
+
    return (
     <header className="bg-white shadow-md px-6 py-4">
       <div className="container mx-auto">

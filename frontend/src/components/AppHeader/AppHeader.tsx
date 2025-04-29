@@ -23,3 +23,8 @@ const AppHeader: React.FC = () => {
 };
 
 export default AppHeader;
+
+// add auth awareness, error handling, TS improvements and accessibility features to this component
+// 1. **Auth Awareness**: Ensure that the component checks if the user is authenticated before displaying user information. If not authenticated, redirect to the login page or show a message.
+// 2. **Error Handling**: Implement error handling to manage any issues that may arise when fetching user data. This could include displaying an error message or a fallback UI.
+// 3. **TypeScript Improvements**: Use TypeScript interfaces or types to define the structure of the user data. This will help with type safety and improve code readability. 

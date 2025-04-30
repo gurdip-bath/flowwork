@@ -9,6 +9,10 @@ const AppHeader: React.FC = () => {
     role: "admin"
   };
 
+  // creating a context to manage user authentication state
+
+  const 
+
    return (
     <header className="bg-white shadow-md px-6 py-4">
       <div className="container mx-auto">

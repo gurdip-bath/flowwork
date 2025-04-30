@@ -3,26 +3,30 @@ import { useAuth } from '../../context/AuthContext';
 
 const AppHeader: React.FC = () => { 
 
-  // Mock user data for now
-  const user = {
-    email: "test@example.com",
-    role: "admin"
-  };
+  
+  const { user, isAuthenticated } = useAuth();
    
 
   return (
-    <header className="bg-white shadow-md px-6 py-3">
+    <header className="bg-white shadow-md px-6 py-4">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold text-blue-600">FlowWork HR</h1>
-        <div className="flex flex-col items-end">
-          <div className="mb-1">
+        
+        {isAuthenticated && user ? (
+          <div className='text-right'>  
+            <p className='font-medium'>Welcome, {user.email}</p>
+            <p className='text-sm text-gray-600'>{user.role}</p>
+          </div>
+        ) : (
+          <div className='text-right'>
+            <p className='text-sm text-gray-600'>Not logged in</p>
+          </div>
+        )}
+         <div className="mb-1">
             <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
               Logout
             </button>
           </div>
-          <p className="font-medium">Welcome, {user.email}</p>
-          <p className="text-sm text-gray-600">{user.role}</p>
-        </div>
       </div>
     </header>
   );

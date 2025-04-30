@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 const AppHeader: React.FC = () => { 
 
   
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
    
 
   return (
@@ -23,7 +23,8 @@ const AppHeader: React.FC = () => {
           </div>
         )}
          <div className="mb-1">
-            <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
+            <button onClick={() => logout} 
+            className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
               Logout
             </button>
           </div>

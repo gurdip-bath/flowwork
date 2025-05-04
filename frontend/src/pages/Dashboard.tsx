@@ -10,6 +10,7 @@ const Dashboard = () => {
         </div>
     )
 }
+
 export default Dashboard;
 // This is a simple dashboard page that welcomes the user and provides a brief description of its purpose.
 // continue building out the dashboard with more features and components as needed.

@@ -1,13 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import LoginForm from '../components/LoginForm/LoginForm';
 
 // Manages the page context and layout
 
 const LoginPage: React.FC = () => {
-  const handleLogin = (email: string, password: string) => {
-    console.log('Login attempt with:', email, password);
-    // In a real app, you would call your authentication API here
+  const navigate = useNavigate();
+  const { login, error, isLoading } = useAuth();
+
+  const handleLogin = async (email: string, password: string) => {
+    try {
+      await login (email, password);
+
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Login failed:', error);
+    };
   };
 
   return (
@@ -17,7 +26,18 @@ const LoginPage: React.FC = () => {
         <p className="text-gray-600">Sign in to your account</p>
       </div>
       
-      <LoginForm onSubmit={handleLogin} />
+      {isLoading && <div className="text-center mb-4">Loading...</div>}
+
+      {error && (
+        <div className="max-w-md mx-auto mb-4 p-3 bg-red-100 text-red-700 rounded">
+          {error}
+        </div>
+      )}
+
+      <LoginForm 
+      onSubmit={handleLogin}
+      isLoading={isLoading}
+      error={error} />
     </div>
   );
 };

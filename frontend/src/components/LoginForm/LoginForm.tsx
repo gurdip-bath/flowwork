@@ -18,10 +18,13 @@ const LoginSchema = Yup.object().shape({
 
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
-}
+  isLoading?: boolean;
+  error?: string | null;
+  };
+
 
 // Focused only on form functionality
-const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading, error }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -29,14 +32,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   event.preventDefault();
   
   try {
-    // Use the LoginSchema to validate inputs before submission
     LoginSchema.validateSync({ email, password });
-    // If validation passes, proceed with submission
     onSubmit(email, password);
+  
   } catch (error) {
-    // If validation fails, handle the error
     console.error('Validation error:', error);
-    // You could add state here to display errors if needed
   }
 };
 

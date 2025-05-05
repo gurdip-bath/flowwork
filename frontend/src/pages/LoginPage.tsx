@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/LoginForm/LoginForm';
 
 // Manages the page context and layout

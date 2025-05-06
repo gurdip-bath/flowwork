@@ -96,3 +96,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, isLoading, error }) => 
 };
 
 export default LoginForm;
+
+// note to self. currently the form provides a response of Login failed. Please check your credentials.
+// need to double check credentials and ensure that the login is working as expected.

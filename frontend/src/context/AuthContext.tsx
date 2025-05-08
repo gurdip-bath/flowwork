@@ -105,6 +105,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       error: null,
     });
 
+    // insert console log here to check if the login function is working!!!!!!!
+
     try {
       // Send login request
       const response = await axios.post('/api/v1/auth/login', {

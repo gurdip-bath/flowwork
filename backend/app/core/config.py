@@ -18,10 +18,11 @@ class Settings(BaseSettings):
     
     # CORS settings
     BACKEND_CORS_ORIGINS: List[str] = [
-        "http://localhost:3000",  # React frontend
-        "http://localhost:8000",  # FastAPI backend
-        "http://localhost",
-    ]
+    "http://localhost:3000",  # React frontend
+    "http://localhost:8000",  # FastAPI backend
+    "http://localhost:5173",  # Vite default dev server
+    "http://localhost",
+]
     
     # Database settings
     DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost/flowwork")

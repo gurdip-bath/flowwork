@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
 
+axios.defaults.baseURL = 'http://localhost:8000';
+
 // Define types for our authentication state
 interface AuthState {
   user: User | null;
@@ -108,11 +110,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // insert console log here to check if the login function is working!!!!!!!
 
     try {
-      // Send login request
-      const response = await axios.post('/api/v1/auth/login', {
-        username: email, // API expects username but we use email
-        password,
-      });
+      // Create form data for OAuth2 compatibility
+      const formData = new FormData();
+      formData.append('username', email);
+      formData.append('password', password);
+
+      // Send login request as form data
+      const response = await axios.post('/api/v1/auth/login', formData);
 
       // Get token from response
       const token = response.data.access_token;

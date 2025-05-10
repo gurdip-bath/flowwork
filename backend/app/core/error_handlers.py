@@ -43,3 +43,5 @@ async def sqlalchemy_exception_handler(request: Request, exc: SQLAlchemyError):
             "timestamp": datetime.now().isoformat()
         }
     )
+
+# Add more exception handlers as needed TODO

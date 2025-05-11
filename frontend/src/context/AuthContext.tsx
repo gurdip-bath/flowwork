@@ -115,20 +115,29 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       formData.append('username', email);
       formData.append('password', password);
 
+      console.log('2. Sending request');
+
       // Send login request as form data
       const response = await axios.post('/api/v1/auth/login', formData);
+      console.log('3. Response:', response.data);
 
       // Get token from response
       const token = response.data.access_token;
       
       // Store token in local storage
+      console.log('4. Token stored in local storage:', token);
       localStorage.setItem('token', token);
+      
       
       // Set the token in axios default headers
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       
       // Fetch user data
+      console.log('5. Getting user data');
       const userResponse = await axios.get('/api/v1/users/me');
+      console.log('5. User data:', userResponse.data);
+
+      console.log('6. Login complete');
       
       // Update auth state
       setAuthState({

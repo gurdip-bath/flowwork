@@ -12,6 +12,7 @@ const LoginPage: React.FC = () => {
   const handleLogin = async (email: string, password: string) => {
     try {
       await login (email, password);
+      console.log('7. Navigating to dashboard')
 
       navigate('/dashboard');
     } catch (error) {

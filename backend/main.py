@@ -19,6 +19,8 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json",
 )
 
+print(f"Connected to database: {settings.DATABASE_URL}")
+
 # Set up CORS middleware
 app.add_middleware(
     CORSMiddleware,

@@ -14,6 +14,7 @@ from app.crud import user as user_crud
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 
+
 def get_db():
     """
     Dependency for database session handling.
@@ -32,6 +33,7 @@ def authenticate_user(db: Session, email: str, password: str):
     """
     user = user_crud.get_user_by_email(db, email=email)
     if not user:
+        print(f"[AUTH] User not found: {email}")
         return False
     if not verify_password(password, user.password_hash):
         return False

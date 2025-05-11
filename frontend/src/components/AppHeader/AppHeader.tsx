@@ -23,7 +23,7 @@ const AppHeader: React.FC = () => {
           </div>
         )}
          <div className="mb-1">
-            <button onClick={() => logout} 
+            <button onClick={logout}
             className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
               Logout
             </button>

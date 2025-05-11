@@ -107,7 +107,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       error: null,
     });
 
-    // insert console log here to check if the login function is working!!!!!!!
+    console.log('[Frontend] Starting login for:', email);
 
     try {
       // Create form data for OAuth2 compatibility
@@ -189,4 +189,3 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   );
 };
 
-export default AuthProvider;

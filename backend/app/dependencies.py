@@ -31,12 +31,21 @@ def authenticate_user(db: Session, email: str, password: str):
     """
     Authenticate a user with email and password.
     """
+    print(f"[AUTH] Attempting to authenticate: {email}")
     user = user_crud.get_user_by_email(db, email=email)
     if not user:
         print(f"[AUTH] User not found: {email}")
         return False
-    if not verify_password(password, user.password_hash):
+    print(f"[AUTH] User found: {user.email}, ID: {user.id}, Active: {user.is_active}")
+    
+    password_match = verify_password(password, user.password_hash)
+    print(f"[AUTH] Password verification result: {password_match}")
+    
+    if not password_match:
+        print(f"[AUTH] Password mismatch for user: {email}")
         return False
+    
+    print(f"[AUTH] Authentication successful for: {email}")
     return user
 
 

@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     "http://localhost:3000",  # React frontend
     "http://localhost:8000",  # FastAPI backend
     "http://localhost:5173",  # Vite default dev server
+    "http://127.0.0.1:5173",  # Current frontend URL  
     "http://localhost",
 ]
     

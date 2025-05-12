@@ -12,6 +12,18 @@ router = APIRouter(
     dependencies=[Depends(get_current_active_user)]
 )
 
+@router.get("/me", response_model=UserResponse)
+def read_user_me(
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_active_user)
+):
+    """
+    Get the current user's information.
+    """
+    db_user = user_crud.get_user_by_email(db, email=current_user.get("sub"))
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_user
 
 @router.get("/", response_model=List[UserResponse])
 def read_users(

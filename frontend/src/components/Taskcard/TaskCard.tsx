@@ -1,9 +1,20 @@
 import React from 'react';
 
+interface TaskCardProps {
+  name: string;
+  id: string;
+  description: string;
+  onButtonClick: () => void;
+}
 
-function TaskCard({name, id, description, onButtonClick}) {
+const TaskCard: React.FC <TaskCardProps> = ({name, id, description, onButtonClick}) => {
   return (
-    <h1>Content</h1>
+    <div>
+      <h1>this is the {name}</h1>
+      <h1> this is the {id}</h1>
+      <h1> this is the {description}</h1>
+      <button onClick={onButtonClick}>Click me</button>
+    </div>
   );
 }
 

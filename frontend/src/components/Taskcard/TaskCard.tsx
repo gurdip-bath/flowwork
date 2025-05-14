@@ -19,3 +19,5 @@ const TaskCard: React.FC <TaskCardProps> = ({name, id, description, onButtonClic
 }
 
 export default TaskCard;
+
+// TODO: style the task card with tailwind css

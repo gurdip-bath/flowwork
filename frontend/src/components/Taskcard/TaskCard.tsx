@@ -9,12 +9,13 @@ interface TaskCardProps {
 
 const TaskCard: React.FC <TaskCardProps> = ({name, id, description, onButtonClick}) => {
   return (
-    <div className='bg-white shadow-md rounded-lg p-4 m-4 column'>
-      <h1 className=''>this is the {name}</h1>
-      <h1> this is the {id}</h1>
-      <h1> this is the {description}</h1>
-      <button onClick={onButtonClick}>Click me</button>
-    </div>
+  <div className="bg-white border-l-4 border-primary p-4 m-2 rounded shadow-md hover:shadow-lg">
+    <h2 className="text-lg font-bold text-secondary">{name}</h2>
+    <p className="text-sm text-gray-500">ID: {id}</p>
+    <p className="mt-1">{description}</p>
+    <button className="mt-3 bg-primary text-white px-3 py-1 rounded text-sm"
+      onClick={onButtonClick}>View Document</button>
+  </div>
   );
 }
 

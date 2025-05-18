@@ -9,9 +9,9 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold text-gray-800">Welcome to the Dashboard</h1>
             <p className="text-gray-600">This is where you can manage your tasks and projects.</p>
             <TaskCard
-                name = "task1"
+                name = "Task 1"
                 id = "1"
-                description = " the first task"
+                description = "Sign contract and new starter docs"
                 onButtonClick = {() => console.log('Button clicked')}
             />
         </div>

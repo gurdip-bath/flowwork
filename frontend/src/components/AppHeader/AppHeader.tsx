@@ -8,23 +8,23 @@ const AppHeader: React.FC = () => {
    
 
   return (
-    <header className="bg-white shadow-md px-6 py-4 fixed top-0 left-0 right-0 z-10">
+    <header className="bg-secondary text-white shadow-md px-6 py-4 fixed top-0 left-0 right-0 z-10">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold text-blue-600">FlowWork HR</h1>
+        <h1 className="text-xl font-bold text-white">FlowWork HR</h1>
         
         {isAuthenticated && user ? (
           <div className='text-right'>  
             <p className='font-medium'>Welcome, {user.email}</p>
-            <p className='text-sm text-gray-600'>{user.role}</p>
+            <p className='text-sm text-gray-300'>{user.role}</p>
           </div>
         ) : (
           <div className='text-right'>
-            <p className='text-sm text-gray-600'>Not logged in</p>
+            <p className='text-sm text-gray-300'>Not logged in</p>
           </div>
         )}
          <div className="mb-1">
             <button onClick={logout}
-            className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
+            className="bg-primary hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors">
               Logout
             </button>
           </div>

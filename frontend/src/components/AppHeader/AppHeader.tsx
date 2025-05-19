@@ -8,7 +8,7 @@ const AppHeader: React.FC = () => {
    
 
   return (
-    <header className="bg-white shadow-md px-6 py-4">
+    <header className="bg-white shadow-md px-6 py-4 fixed top-0 left-0 right-0 z-10">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold text-blue-600">FlowWork HR</h1>
         

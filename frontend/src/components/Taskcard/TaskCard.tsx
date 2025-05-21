@@ -15,6 +15,9 @@ const TaskCard: React.FC <TaskCardProps> = ({name, id, description, onButtonClic
     <p className="mt-1 py-2">{description}</p>
     <button className="mt-3 bg-primary text-white px-3 py-1 rounded text-sm"
       onClick={onButtonClick}>View Document</button>
+      <div>
+        <p>email api should go here</p>
+        </div>
   </div>
   );
 }

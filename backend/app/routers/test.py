@@ -1,4 +1,4 @@
-from fastapi import APIrouter
+from fastapi import APIRouter
 from app.services.email_service import send_email
 
 router = APIRouter(prefix="/test", tags=["testing"])

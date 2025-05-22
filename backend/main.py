@@ -4,7 +4,7 @@ import logging
 import os
 
 from app.core.config import settings
-from app.routers import auth, user, employee, department, onboarding
+from app.routers import auth, user, employee, department, onboarding, test
 
 # Configure logging
 logging.basicConfig(
@@ -36,6 +36,7 @@ app.include_router(user.router, prefix=settings.API_V1_STR)
 app.include_router(employee.router, prefix=settings.API_V1_STR)
 app.include_router(department.router, prefix=settings.API_V1_STR)
 app.include_router(onboarding.router, prefix=settings.API_V1_STR)
+app.include_router(test.router, prefix=settings.API_V1_STR)
 
 
 @app.on_event("startup")

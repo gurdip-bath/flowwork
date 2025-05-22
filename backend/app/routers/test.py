@@ -1,0 +1,10 @@
+from fastapi import APIrouter
+from app.services.email_service import send_email
+
+router = APIRouter(prefix="/test", tags=["testing"])
+
+@router.get("/send-basic-email")
+def test_email():
+    """Send a basic test email"""
+    result = send_email()
+    return {"message": "Email sent", "status_code": result['status_code']}

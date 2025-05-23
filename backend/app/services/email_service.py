@@ -25,3 +25,5 @@ def send_email():
         'body': response.body,
         'headers': response.headers
     }
+
+    #TODO - integrate SendMail instead as SendGrid has an issue with it's API on RapidAPI 

@@ -5,6 +5,6 @@ router = APIRouter(prefix="/test", tags=["testing"])
 
 @router.get("/send-basic-email")
 def test_email():
-    """Send a basic test email"""
+    """Send test email"""
     result = send_email()
-    return {"message": "Email sent", "status_code": result['status_code']}
+    return {"message": "Email sent", "status": result['status_code']}

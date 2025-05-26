@@ -24,6 +24,12 @@ const TaskCard: React.FC<TaskCardProps> = ({ name, id, description, onButtonClic
     }
   };
 
+  const [ showDocModal, setShowDocModal ] = useState(false);
+  
+  const handleViewDocument = () => {
+    setShowDocModal(true); // Toggle modal open
+  };
+  
   return (
     <div className="bg-white border-l-4 border-primary p-4 m-2 rounded shadow-md hover:shadow-lg">
       <h2 className="text-lg font-bold text-secondary py-2">{name}</h2>

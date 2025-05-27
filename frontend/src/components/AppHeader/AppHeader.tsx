@@ -8,9 +8,16 @@ const AppHeader: React.FC = () => {
    
 
   return (
-    <header className="bg-secondary text-white shadow-md px-6 py-4 fixed top-0 left-0 right-0 z-10">
+    <header className="bg-secondary/95 backdrop-blur-md text-white shadow-lg border-b border-white/10 px-6 py-4 fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold text-white">FlowWork HR</h1>
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center">
+            <span className="text-white font-bold text-sm">F</span>
+          </div>
+          <h1 className="text-xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+            FlowWork HR
+          </h1>
+      </div>
         
         {isAuthenticated && user ? (
           <div className='text-right'>  
